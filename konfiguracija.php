@@ -1,5 +1,5 @@
 <?php
-
+$lik_sajta = "localhost/novi_projekat/"; // Ubacena varijabla radi bolje migracije na drugu serversku konfiguraciju, takodje i u slucaju promena domena
 $password = "Nemanjabg44";
 $username = "root";
 $dbhost = "localhost";
