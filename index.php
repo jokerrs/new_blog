@@ -2,6 +2,8 @@
 	
 	// Konekcija sa bazom podataka (MySql)
     require_once ("./konfiguracija.php");
+    // Klasa korisnici.php
+    require_once ("./klase/korisnici.php");
     // Pocetak sesije
     session_start();
 
@@ -44,7 +46,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.php?stranica=login">Login</a>
+            <a class="nav-link" href="login.php">Login</a>
           </li>
         </ul>
       </div>
@@ -61,8 +63,6 @@
       	<?php
       	if($_GET['stranica']=='post'){
       		include "post.php";
-      	}elseif($_GET['stranica']=='login'){
-      		include "login.php";
       	}elseif(empty($_GET['straica'])){
       		include 'pocetna.php';
       	}
