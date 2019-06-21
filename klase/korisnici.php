@@ -35,7 +35,7 @@ class Users{
 	}
 
 	function getUserName($username){
-		$getUserName = $this->conn->prepare("SELECT * FROM users WHERE username = ?");
+		$getUserName = $this->conn->prepare("SELECT * FROM users WHERE username = ? LIMIT 1");
 		$getUserName->execute([$username]);
 		return $getUserName;
 	}
