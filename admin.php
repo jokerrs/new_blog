@@ -18,4 +18,6 @@
     		$lastname = $User_data_value['lastname'];
     	}
     	echo "Dobrodosao "	.$name." ".$lastname;
+    	echo "<br>";
+    	echo "<a href='logout.php'>Odjava</a>";
     }
