@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Klasa koja ce nam DOOOOOOOOOSTAAAA pomoci prilikom rada sa korisnicima tj korisnikom 
+ * Klasa koja ce nam DOOOOOOOOOSTAAAA pomoci prilikom rada sa korisnicima tj korisnikom 	
  */
 class Users{
 
@@ -20,6 +20,15 @@ class Users{
 	return $getUsers;
 	}
 
+	function setUser($userid){
+		$this->userid		= $userid;
+	}
+
+	function getUser($userid){
+		$getUser = $this->conn->prepare("SELECT * FROM users WHERE id = ?");
+		$getUser->execute([$userid]);
+		return $getUser;
+	}
 
 	function setUserLogin($username, $password){
 		$this->username 	= $username;
@@ -64,7 +73,7 @@ class Users{
                     return false;
                 }
             }
-        } else {
+        }else {
             return false;
         }
     }
