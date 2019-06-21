@@ -30,6 +30,16 @@ class Users{
 		return $getUser;
 	}
 
+	function setUserName($username){
+		$this->username 	= $username;
+	}
+
+	function getUserName($username){
+		$getUserName = $this->conn->prepare("SELECT * FROM users WHERE username = ?");
+		$getUserName->execute([$username]);
+		return $getUserName;
+	}
+
 	function setUserLogin($username, $password){
 		$this->username 	= $username;
 		$this->password 	= $password;
