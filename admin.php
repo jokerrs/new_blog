@@ -17,6 +17,5 @@
     		$name = $User_data_value['name'];
     		$lastname = $User_data_value['lastname'];
     	}
-
-    	echo "Dobrodosao ".$name." ".$lastname;
+    	echo "Dobrodosao "	.$name." ".$lastname;
     }
