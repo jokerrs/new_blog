@@ -12,10 +12,3 @@ $dbname = "zadatak1";
 		    print "Error!: " . $e->getMessage() . "<br/>";
 		    die();
 		}	
-
-
-		$test = $conn->prepare("SELECT * FROM users");
-		$test->execute();
-		foreach ($test as $test1) {
-			print_r($test1);
-		}
