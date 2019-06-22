@@ -1,8 +1,12 @@
 <?php
     // Klasa za objave
+    if(!isset($_GET['objava'])){
+        include "404.php";
+    }else{
     require_once ("./klase/objave.php");
     $objava = new Articles($conn);
-    $objavaData = $objava->getArticle($_GET['objava']);
+    $getobjava = $_GET['objava'];
+    $objavaData = $objava->getArticle($getobjava);
     foreach ($objavaData as $objavaData_values) {
         $title = $objavaData_values['title'];
         $content = $objavaData_values['content'];
@@ -11,11 +15,15 @@
         $created = $objavaData_values['created_time'];
     }
 
+    if($objavaData->rowCount() > 0){
 ?>
 
         <!-- Title -->
         <h1 class="mt-4"><?php echo $title; ?></h1>
+            
+            <?php
 
+            ?>
         <!-- Author -->
         <p class="lead">
           by
@@ -35,4 +43,10 @@
         <hr>
 
         <!-- Post Content -->
-        <?php echo $content; ?>
+        <?php echo $content;
+
+            }else{
+            include "404.php";
+           }
+        }
+           ?>

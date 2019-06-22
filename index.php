@@ -1,9 +1,14 @@
 <?php
 	
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
 	// Konekcija sa bazom podataka (MySql)
     require_once ("./konfiguracija.php");
     // Klasa korisnici.php
     require_once ("./klase/korisnici.php");
+    // Klasa za objave
+    require_once ("./klase/objave.php");
     // Pocetak sesije
     session_start();
 
@@ -61,11 +66,13 @@
     	      <!-- Post Content Column -->
       <div class="col-lg-8">
       	<?php
-      	if($_GET['stranica']=='post'){
-      		include "post.php";
-      	}elseif(empty($_GET['straica'])){
-      		include 'pocetna.php';
-      	}
+      	if(!isset($_GET['stranica']) || empty($_GET['stranica'])){
+          include 'pocetna.php';
+      	}elseif($_GET['stranica']=='post'){
+          include "post.php";
+      	}elseif ($_GET['stranica']=='author') {
+          include "author.php";
+        }
       	?>
       </div>
       <!-- Sidebar Widgets Column -->
