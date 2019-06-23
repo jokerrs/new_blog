@@ -50,3 +50,6 @@
            }
         }
            ?>
+<script type="text/javascript">
+    document.title = <?= "\"".$title."\""; ?>;
+</script>
