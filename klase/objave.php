@@ -65,8 +65,11 @@ class Articles{
 
 	function insertArticle($article_title, $article_content, $article_author){
 		$insertArticle = $this->conn->prepare("INSERT INTO articles (`title`, `content`, `author`, `created_time`) VALUES (?, ?, ?, ?)");
-		$insertArticle->execute([$article_title, $article_content, $article_author, date('Y-m-d H:i:s')]); 
-		return true;
+		if($insertArticle->execute([$article_title, $article_content, $article_author, date('Y-m-d H:i:s')])){ 
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	function setupdateArticle($article_id, $article_title, $article_content, $article_author){
