@@ -69,7 +69,7 @@
 
 <style type="text/css">
 
-.table td {
+.table td, .table th {
    text-align: center;   
 }
 </style>
@@ -106,6 +106,9 @@ function format ( d ) {
     return '<div class=" align-items-center justify-content-center"><table cellpadding="5" cellspacing="0" border="0" class="row align-items-center justify-content-center">'+
         '<tr>'+
             '<td>'+d.content+'</td>'+
+        '</tr>'+
+        '<tr>'+
+            '<td>'+d.created_time+'</td>'+
         '</tr>'+
     '</table></div>';
 }
