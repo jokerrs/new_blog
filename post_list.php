@@ -44,15 +44,16 @@
       <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="<?= $linksajta ?>admin.php">Admin</a>
+      <a class="navbar-brand" href="<?= $linksajta ?>admin.php">Admin | <?= $name." ".$lastname; ?></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item nav-link active" active><?= $name." ".$lastname; ?></li>
+          <li class="nav-item"><a class="nav-link" href="<?= $link_sajta."admin.php"; ?>">Pocetna</a></li>
           <li class="nav-item active" active><a class="nav-link" href="<?= $link_sajta."post_list.php"; ?>">Lista postova</a></li>
           <li class="nav-item"><a class="nav-link" href="<?= $link_sajta."add_new.php"; ?>">Dodaj novi post</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= $link_sajta."edit.php"; ?>">Izmeni post</a></li>
           <li class="nav-item"><a class="nav-link" href="<?= $link_sajta."delete.php"; ?>">Obrisi post</a></li>
           <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
         </ul>
@@ -104,6 +105,17 @@
 function format ( d ) {
     // `d` is the original data object for the row
     return '<div class=" align-items-center justify-content-center"><table cellpadding="5" cellspacing="0" border="0" class="row align-items-center justify-content-center">'+
+              '<tr>'+
+              '<td>'+
+            '<a href="<?= $link_sajta."edit.php?id='+d.id+'"; ?>">'+
+                '<button type="button" class="btn btn-primary">Izmeni post</button>'+
+            '</a>'+
+            '<form>'+
+            '<input type="hidden" id="delete" name="'+d.id+'">'+
+                '<button type="button" class="btn btn-danger">Obrisi post</button>'+
+            '</form>'+
+        '</td>'+
+        '</tr>'+ 
         '<tr>'+
             '<td>'+d.content+'</td>'+
         '</tr>'+
@@ -124,7 +136,7 @@ $(document).ready(function() {
                 "className":      'details-control',
                 "orderable":      false,
                 "data":           null,
-                "defaultContent": '<a href="#">Pogledaj ceo sadrzaj</a>'
+                "defaultContent": '<a href="#">Pogledaj ceo sadrzaj/Izmeni/Obrisi</a>'
             },
         ],
         "order": [[1, 'asc']],
@@ -177,7 +189,7 @@ $(document).ready(function() {
 
 
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
+  <footer class="py-5 bg-dark ">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; <b>Zadatak 1</b> <?php echo date('Y'); ?></p>
     </div>
