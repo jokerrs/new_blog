@@ -8,7 +8,7 @@ $rezultat = $objave->getArticles();
 $broj = $rezultat->rowCount();
 if($broj > 0){
 	$objave_arr = array();
-	$objave_arr['records'] = array();
+	$objave_arr['data'] = array();
 	while ($row = $rezultat->fetch(PDO::FETCH_ASSOC)) {
 		extract($row);
 		$objava = array(
@@ -19,7 +19,7 @@ if($broj > 0){
 			"author" => $author,
 			"created_time" => gmdate("F j Y, g:iA", strtotime($created_time))
 		);
-		array_push($objave_arr['records'], $objava);
+		array_push($objave_arr['data'], $objava);
 	}
  http_response_code(200);
  echo json_encode($objave_arr, JSON_PRETTY_PRINT);
