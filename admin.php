@@ -44,13 +44,17 @@
       <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="<?= $linksajta ?>admin.php">Admin</a>
+      <a class="navbar-brand" href="<?= $linksajta ?>admin.php">Admin | <?= $name." ".$lastname; ?></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item nav-link active" active><?= $name." ".$lastname; ?></li>
+          <li class="nav-item active" active><a class="nav-link" href="<?= $link_sajta."admin.php"; ?>">Pocetna</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= $link_sajta."post_list.php"; ?>">Lista postova</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= $link_sajta."add_new.php"; ?>">Dodaj novi post</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= $link_sajta."edit.php"; ?>">Izmeni post</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= $link_sajta."delete.php"; ?>">Obrisi post</a></li>
           <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
         </ul>
       </div>
@@ -60,28 +64,32 @@
   <!-- Page Content -->
   <div class="container">
 
-
-
     <div class="row">
 
-              <div class="col-lg-6 center">
-            <form id="insertArticle" method="POST">
-                <div id="success" class="alert alert-success" style="display:none">
-                    <strong>Uspesno</strong> ste dodali novi post.
-                </div>
-                <div id="invalid" class="alert alert-danger" style="display:none">
-                    <strong>Greska!</strong> Doslo je do greske
-                </div>
-                <label for="title">Naslov</label>
-                <input class="form-control" id="title" name="title" type="text">
-                <div class="form-group">
-                    <label for="content">Sadrzaj</label>
-                    <textarea class="form-control" id="content" name="content" rows="3"></textarea>
-                </div>
-                <input class="form-control" type="hidden" id="author_id" name="author_id" value="<?= $_SESSION['uid']?>">
-                <button type="submit" class="btn btn-primary">Unesi</button>
-            </form>
+        
+        <div class="col-sm admin-buttons">
+            <a href="<?= $link_sajta."post_list.php"; ?>">
+                <button type="button" class="btn btn-info">List postova</button>
+            </a>
         </div>
+        <div class="col-sm admin-buttons">
+            <a href="<?= $link_sajta."add_new.php"; ?>">
+                <button type="button" class="btn btn-success">Dodaj novi post</button>
+            </a>
+        </div>
+        <div class="col-sm admin-buttons">
+            <a href="<?= $link_sajta."edit.php"; ?>">
+                <button type="button" class="btn btn-primary">Izmeni post</button>
+            </a>
+        </div>
+        <div class="col-sm admin-buttons">
+            <a href="<?= $link_sajta."delete.php"; ?>">
+                <button type="button" class="btn btn-danger">Obrisi post</button>
+            </a>
+        </div>
+
+
+
 
     </div>
     <!-- /.row -->
@@ -91,46 +99,8 @@
   </div>
   <!-- /.container -->
 
-<script type="text/javascript">
-      $(document).ready(function() {
-  $('#insertArticle').submit(function(e) {
-    var data = JSON.stringify({
-            title:$("#title").val(), 
-            content:$("#content").val(), 
-            author_id:$("#author_id").val()
-        });
-    e.preventDefault();
-    $.ajax({
-        type: "POST",
-        url: 'http://localhost/novi_projekat/api/articles/create.php',
-        data: data,
-        statusCode: {
-        200: function(){
-            $("#success").show(500);
-            setTimeout(function() { $("#success").hide(500); }, 2500);
-            },
-        
-        400: function(){
-            $("#invalid").show(500);
-            setTimeout(function() { $("#invalid").hide(500); }, 2500);
-            },
-        
-        503: function(){
-            $("#invalid").show(500);
-            setTimeout(function() { $("#invalid").hide(500); }, 2500);
-            },
-        
-        403.3: function(){
-            $("#invalid").show(500);
-            setTimeout(function() { $("#invalid").hide(500); }, 2500);
-            },
-        }
-   });
- });
-});
-  </script>
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
+  <footer class="py-5 bg-dark fixed-bottom">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; <b>Zadatak 1</b> <?php echo date('Y'); ?></p>
     </div>
