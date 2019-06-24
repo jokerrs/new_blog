@@ -31,7 +31,6 @@
 
   <!-- Custom styles for this template -->
   <link href="./css/blog-post.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -129,8 +128,6 @@
   </footer>
 
   <!-- Bootstrap core JavaScript -->
-  <script src="./js/jquery.min.js"></script>
-  <script src="./js/bootstrap.min.js"></script>
 
 </body>
 
