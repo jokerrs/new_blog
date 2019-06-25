@@ -15,7 +15,7 @@
           ?>
                   <!-- Blog Post -->
         <div class="card mb-4">
-          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+        <img class="img-fluid rounded" src="<?php echo $objava_value['main_image']; ?>" alt="<?php echo $objava_value['title']; ?>">
           <div class="card-body">
             <h2 class="card-title"><?= $objava_value['title']; ?></h2>
             <?= $content."..."; ?>

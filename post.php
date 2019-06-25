@@ -13,6 +13,7 @@
         $author_id = $objavaData_values['author_id'];
         $author = $objavaData_values['author'];
         $created = $objavaData_values['created_time'];
+        $image = $objavaData_values['main_image'];
     }
 
     if($objavaData->rowCount() > 0){
@@ -38,7 +39,7 @@
         <hr>
 
         <!-- Preview Image -->
-        <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+        <img class="img-fluid rounded" src="<?php echo $image; ?>" alt="<?php echo $title; ?>">
 
         <hr>
 
