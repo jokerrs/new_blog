@@ -1,8 +1,4 @@
 <?php
-	
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
 	// Konekcija sa bazom podataka (MySql)
     require_once ("./konfiguracija.php");
     // Klasa korisnici.php
@@ -49,8 +45,13 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item"><?php
+          if(isset($_SESSION['uid'])){
+            echo "
+            <a class=\"nav-link\" href=\"admin.php\">Admin panel</a>";
+          }else{ ?>
             <a class="nav-link" href="login.php">Login</a>
+          <?php } ?>
           </li>
         </ul>
       </div>
