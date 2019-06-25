@@ -75,6 +75,7 @@
                                     Prijavi se
                                 </button>
                             </div>
+                      <a class="nav-link" href="<?= $link_sajta; ?>">Blog</a>
                     </div>
                     </form>
                 </div>
