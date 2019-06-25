@@ -11,14 +11,19 @@ if(isset($_SESSION['uid'])){
 	$objave = new Articles($conn);
 	$data = json_decode(file_get_contents("php://input"));
 	if(!empty($data->title) && !empty($data->content) && !empty($data->author_id)){
-		$title = $data->title;
-		$content = $data->content;
-		$author_id = $data->author_id;
-		if($objave->insertArticle($title, $content, $author_id)){
-			http_response_code(200);
+		if(!empty($data->main_image)){
+			$title = $data->title;
+			$content = $data->content;
+			$author_id = $data->author_id;
+			$main_image = $data->main_image;
+			if($objave->insertArticle($title, $content, $author_id, $main_image)){
+				http_response_code(200);
+			}else{
+		        http_response_code(503);
+		    }
 		}else{
-	        http_response_code(503);
-	    }
+		        http_response_code(404);
+		}
 	}else{
 		http_response_code(400);
 	}
