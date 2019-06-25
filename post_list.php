@@ -110,10 +110,9 @@ function format ( d ) {
             '<a href="<?= $link_sajta."edit.php?id='+d.id+'"; ?>">'+
                 '<button type="button" class="btn btn-primary">Izmeni post</button>'+
             '</a>'+
-            '<form>'+
-            '<input type="hidden" id="delete" name="'+d.id+'">'+
+            '<a href="<?= $link_sajta."delete.php?id='+d.id+'"; ?>">'+
                 '<button type="button" class="btn btn-danger">Obrisi post</button>'+
-            '</form>'+
+            '</a>'+
         '</td>'+
         '</tr>'+ 
         '<tr>'+
