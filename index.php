@@ -1,4 +1,8 @@
 <?php
+
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
 	// Konekcija sa bazom podataka (MySql)
     require_once ("./konfiguracija.php");
     // Klasa korisnici.php
@@ -77,36 +81,28 @@
       </div>
       <!-- Sidebar Widgets Column -->
       <div class="col-md-4">	
-
+              <?php  
+              function random_posts($conn, $link_sajta){
+                $random = $conn->prepare("SELECT id, title FROM articles ORDER BY RAND() LIMIT 5");
+                $random->execute();
+                foreach ($random as $random_posts){
+                echo "<li><a href=\"".$link_sajta."index.php?stranica=post&objava=".$random_posts['id']."\">".$random_posts['title']."</a></li>";
+                } 
+              } 
+              ?>
         <!-- Categories Widget -->
         <div class="card my-4">
-          <h5 class="card-header">Categories</h5>
+          <h5 class="card-header">Nasumicni postovi</h5>
           <div class="card-body">
             <div class="row">
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
-                  <li>
-                    <a href="#">Web Design</a>
-                  </li>
-                  <li>
-                    <a href="#">HTML</a>
-                  </li>
-                  <li>
-                    <a href="#">Freebies</a>
-                  </li>
+                  <?php  random_posts($conn, $link_sajta); ?>
                 </ul>
               </div>
               <div class="col-lg-6">
                 <ul class="list-unstyled mb-0">
-                  <li>
-                    <a href="#">JavaScript</a>
-                  </li>
-                  <li>
-                    <a href="#">CSS</a>
-                  </li>
-                  <li>
-                    <a href="#">Tutorials</a>
-                  </li>
+                  <?php random_posts($conn, $link_sajta); ?>
                 </ul>
               </div>
             </div>
