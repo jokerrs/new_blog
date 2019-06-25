@@ -63,9 +63,9 @@ class Articles{
 	}
 
 
-	function insertArticle($article_title, $article_content, $article_author){
-		$insertArticle = $this->conn->prepare("INSERT INTO articles (`title`, `content`, `author`, `created_time`) VALUES (?, ?, ?, ?)");
-		if($insertArticle->execute([$article_title, $article_content, $article_author, date('Y-m-d H:i:s')])){ 
+	function insertArticle($article_title, $article_content, $article_author, $article_image){
+		$insertArticle = $this->conn->prepare("INSERT INTO articles (`title`, `content`, `author`, `main_image`, `created_time`) VALUES (?, ?, ?, ?, ?)");
+		if($insertArticle->execute([$article_title, $article_content, $article_author, $article_image, date('Y-m-d H:i:s')])){ 
 			return true;
 		}else{
 			return false;
