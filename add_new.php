@@ -1,5 +1,8 @@
  <?php    
 
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
  	// Pocetak sesije
     session_start();
 	// Konekcija sa bazom podataka (MySql)
@@ -38,7 +41,6 @@
 tinymce.init({
     selector: '#content',
     plugins: 'image code',
-    toolbar: 'undo redo | image code',
     
     // without images_upload_url set, Upload tab won't show up
     images_upload_url: 'tinymce_image_upload_plugin.php',
@@ -49,7 +51,7 @@ tinymce.init({
       
         xhr = new XMLHttpRequest();
         xhr.withCredentials = false;
-        xhr.open('POST', 'tinymce_image_upload_plugin.php');
+        xhr.open('POST', 'upload.php');
       
         xhr.onload = function() {
             var json;
@@ -110,23 +112,33 @@ tinymce.init({
 
     <div class="row">
 
-              <div class="col-lg-12 center">
+              <div class="col-lg-8 center">
+
             <form id="insertArticle" method="POST">
                 <div id="success" class="alert alert-success" style="display:none">
                     <strong>Uspesno</strong> ste dodali novi post.
                 </div>
                 <div id="invalid" class="alert alert-danger" style="display:none">
-                    <strong>Greska!</strong> Doslo je do greske
+                    <strong>Greska!</strong><span id="invalidM"></span>
                 </div>
                 <label for="title">Naslov</label>
-                <input class="form-control" id="title" name="title" type="text">
+                <input class="form-control" id="title" name="title" type="text" required>
                 <div class="form-group">
                     <label for="content">Sadrzaj</label>
                     <textarea class="form-control" id="content" name="content" rows="3"></textarea>
                 </div>
                 <input class="form-control" type="hidden" id="author_id" name="author_id" value="<?= $_SESSION['uid']?>">
+                <span id="span_image"></span>
                 <button type="submit" class="btn btn-primary">Unesi</button>
             </form>
+        </div>
+        <div class="col-lg-4 center">
+          <br /><br />
+            <form id="imageUpload">
+              <label for="file">Izaberite glavnu sliku</label>
+              <input id="file" type="file" accept="image/*" name="file" /><br />
+              <span id="uploaded_image"></span>
+            <form>
         </div>
 
     </div>
@@ -143,7 +155,8 @@ tinymce.init({
     var data = JSON.stringify({
             title:$("#title").val(), 
             content:$("#content").val(), 
-            author_id:$("#author_id").val()
+            author_id:$("#author_id").val(), 
+            main_image:$("#main_image").val()
         });
     e.preventDefault();
     $.ajax({
@@ -154,27 +167,80 @@ tinymce.init({
         200: function(){
             $("#success").show(500);
             setTimeout(function() { $("#success").hide(500); }, 2500);
+            $("#insertArticle")[0].reset();
+            $("#imageUpload")[0].reset();
+            $('#uploaded_image').empty();
             },
-        
         400: function(){
+            $('#invalidM').html(" Morate popuniti sva polja");
             $("#invalid").show(500);
             setTimeout(function() { $("#invalid").hide(500); }, 2500);
             },
         
         503: function(){
+            $('#invalidM').html(" Doslo je do greske prilikom ubacivanja u bazu, pokusajte ponovo!");
             $("#invalid").show(500);
             setTimeout(function() { $("#invalid").hide(500); }, 2500);
             },
         
         403.3: function(){
+            $('#invalidM').html(" Jos uvek nemate permisije da unosite nove postove!");
             $("#invalid").show(500);
             setTimeout(function() { $("#invalid").hide(500); }, 2500);
             },
+        
+        404: function(){
+            $('#invalidM').html(" Slika je obavezna!");
+            $("#invalid").show(500);
+            setTimeout(function() { $("#invalid").hide(500); }, 2500);
+            },
+
         }
    });
  });
 });
   </script>
+  <script>
+$(document).ready(function(){
+ $(document).on('change', '#file', function(){
+  var name = document.getElementById("file").files[0].name;
+  var form_data = new FormData();
+  var ext = name.split('.').pop().toLowerCase();
+  if(jQuery.inArray(ext, ['gif','png','jpg','jpeg']) == -1) 
+  {
+   alert("Slika je loseg formata");
+  }
+  var oFReader = new FileReader();
+  oFReader.readAsDataURL(document.getElementById("file").files[0]);
+  var f = document.getElementById("file").files[0];
+  var fsize = f.size||f.fileSize;
+  if(fsize > 2000000)
+  {
+   alert("Slika je veca od 2M, molimo kompresujte sliku");
+  }
+  else
+  {
+   form_data.append("file", document.getElementById('file').files[0]);
+   $.ajax({
+    url:"upload.php",
+    method:"POST",
+    data: form_data,
+    contentType: false,
+    cache: false,
+    processData: false,
+    beforeSend:function(){
+     $('#uploaded_image').html("<label class='text-success'>SLika se otprema...</label>");
+    },   
+    success:function(data)
+    {
+     $('#uploaded_image').html("<img src='"+data+"' class='img-thumbnail' />");
+     $('#span_image').html("<input class='form-control' type='hidden' id='main_image' name='main_image' value='"+data+"'>");
+    }
+   });
+  }
+ });
+});
+</script>
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
