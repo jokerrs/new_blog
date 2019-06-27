@@ -44,7 +44,7 @@
         <hr>
 
         <!-- Post Content -->
-        <?php echo $content;
+        <?php echo stripslashes($content);
 
             }else{
             include "404.php";

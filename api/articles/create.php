@@ -16,7 +16,7 @@ if(isset($_SESSION['uid'])){
 			$content = $data->content;
 			$author_id = $data->author_id;
 			$main_image = $data->main_image;
-			if($objave->insertArticle($title, $content, $author_id, $main_image)){
+			if($objave->insertArticle($title, addslashes($content), $author_id, $main_image)){
 				http_response_code(200);
 			}else{
 		        http_response_code(503);

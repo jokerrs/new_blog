@@ -36,47 +36,56 @@
 
   <!-- Bootstrap core CSS -->
   <link href="./css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
+  <script src="./js/tinymce/tinymce.min.js"></script>
+  <script src="./js/tinymce/jquery.tinymce.min.js"></script>
  <script>
 tinymce.init({
     selector: '#content',
-    plugins: 'image code',
-    
-    // without images_upload_url set, Upload tab won't show up
-    images_upload_url: 'tinymce_image_upload_plugin.php',
-    
-    // override default upload handler to simulate successful upload
-    images_upload_handler: function (blobInfo, success, failure) {
-        var xhr, formData;
-      
-        xhr = new XMLHttpRequest();
-        xhr.withCredentials = false;
-        xhr.open('POST', 'upload.php');
-      
-        xhr.onload = function() {
-            var json;
-        
-            if (xhr.status != 200) {
-                failure('HTTP Error: ' + xhr.status);
-                return;
-            }
-        
-            json = JSON.parse(xhr.responseText);
-        
-            if (!json || typeof json.location != 'string') {
-                failure('Invalid JSON: ' + xhr.responseText);
-                return;
-            }
-        
-            success(json.location);
-        };
-      
-        formData = new FormData();
-        formData.append('file', blobInfo.blob(), blobInfo.filename());
-      
-        xhr.send(formData);
+     plugins: [
+      "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+      "searchreplace wordcount visualblocks visualchars code fullscreen",
+      "insertdatetime media nonbreaking save table contextmenu directionality",
+      "emoticons template paste textcolor colorpicker textpattern"
+    ],
+    toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+    toolbar2: "print preview | forecolor backcolor emoticons",
+    image_class_list: [
+        {title: 'Responsive image', value: 'img-fluid rounded'}
+    ],
+  images_upload_url : 'tinymce_image_upload_plugin.php',
+    automatic_uploads : false,
+
+    images_upload_handler : function(blobInfo, success, failure) {
+      var xhr, formData;
+
+      xhr = new XMLHttpRequest();
+      xhr.withCredentials = false;
+      xhr.open('POST', 'tinymce_image_upload_plugin.php');
+
+      xhr.onload = function() {
+        var json;
+
+        if (xhr.status != 200) {
+          failure('HTTP Error: ' + xhr.status);
+          return;
+        }
+
+        json = JSON.parse(xhr.responseText);
+
+        if (!json || typeof json.file_path != 'string') {
+          failure('Invalid JSON: ' + xhr.responseText);
+          return;
+        }
+
+        success(json.file_path);
+      };
+
+      formData = new FormData();
+      formData.append('file', blobInfo.blob(), blobInfo.filename());
+
+      xhr.send(formData);
     },
-});
+  });
 </script>
     <!-- Custom styles for this template -->
   <link href="./css/blog-post.css" rel="stylesheet">
@@ -125,7 +134,7 @@ tinymce.init({
                 <input class="form-control" id="title" name="title" type="text" required>
                 <div class="form-group">
                     <label for="content">Sadrzaj</label>
-                    <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+                    <textarea class="form-control" id="content" name="content" rows="15"></textarea>
                 </div>
                 <input class="form-control" type="hidden" id="author_id" name="author_id" value="<?= $_SESSION['uid']?>">
                 <span id="span_image"></span>
@@ -135,7 +144,7 @@ tinymce.init({
         <div class="col-lg-4 center">
           <br /><br />
             <form id="imageUpload">
-              <label for="file">Izaberite glavnu sliku</label>
+              <span id="uploaded_image"><label for="file">Izaberite glavnu sliku</label></span><br />
               <input id="file" type="file" accept="image/*" name="file" /><br />
               <span id="uploaded_image"></span>
             <form>

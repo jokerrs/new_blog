@@ -12,18 +12,24 @@
 
           foreach ($pagination_results[1] as  $objava_value) {
             $content = substr($objava_value['content'], 0, 800);
+            $search = array("/<p[^>]*>[\s|&nbsp;]*<\/p>/","/<img[^>]+\>/i" );
+            $replace = array("" , "(slika)");
+            $content_clear = preg_replace($search, $replace, stripslashes($content));
           ?>
                   <!-- Blog Post -->
         <div class="card mb-4">
         <img class="img-fluid rounded" src="<?php echo $objava_value['main_image']; ?>" alt="<?php echo $objava_value['title']; ?>">
           <div class="card-body">
             <h2 class="card-title"><?= $objava_value['title']; ?></h2>
-            <?= $content."..."; ?>
-            <a href="<?php echo $link_sajta."/index.php?stranica=post&objava=".$objava_value['id']; ?>" class="float-right btn btn-primary">Vise &rarr;</a>
+            <div class="row"></div>
+
+            <?= $content_clear."..."; ?>
+            
           </div>
           <div class="card-footer text-muted">
             Posted on <?= gmdate("F j Y, g:iA", strtotime($objava_value['created_time'])); ?> by
             <?= "<a href=\"".$link_sajta."index.php?stranica=author&author=".$objava_value['author_id']."\">".$objava_value['author']."</a>" ?>
+            <a href="<?= $link_sajta."/index.php?stranica=post&objava=".$objava_value['id']; ?>" class="float-right btn btn-primary">Vise &rarr;</a>
           </div>
         </div>
 
