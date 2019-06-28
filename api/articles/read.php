@@ -14,7 +14,7 @@ if($broj > 0){
 		$objava = array(
 			"id" => $id,
 			"title" => $title,
-			"content" => $content,
+			"content" => stripslashes($content),
 			"author_id" => $author_id,
 			"author" => $author,
 			"created_time" => gmdate("F j Y, g:iA", strtotime($created_time))
