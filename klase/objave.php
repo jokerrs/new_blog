@@ -104,7 +104,29 @@ class Articles{
 		$total_pages_pdo->execute();
 		$total_rows = $total_pages_pdo->fetchColumn();
 		$total_pages = ceil($total_rows / $limit);
-		$Articles_return = $this->conn->prepare("SELECT * FROM articles_authors LIMIT :start_Article, :limit");
+		$Articles_return = $this->conn->prepare("SELECT * FROM articles_authors ORDER BY id DESC LIMIT :start_Article, :limit ");
+		$Articles_return->bindParam(':start_Article', $start_Article, PDO::PARAM_INT);
+		$Articles_return->bindParam(':limit', $limit, PDO::PARAM_INT);
+		$Articles_return->execute();
+		return  array( $total_pages, $Articles_return->fetchAll());
+
+	} 
+
+	function setArticlePaginationAuthorPage($limit, $page, $article_author){
+		$this->limit 	 = $limit;
+		$this->page 	 = $page;
+		$this->article_author 	 = $article_author;
+	}
+
+	function getArticlePaginationAuthorPage($limit, $page, $article_author){
+		$start_Article = ($page-1) * $limit;
+		$total_pages_pdo = $this->conn->prepare("SELECT count(id) as count FROM articles_authors WHERE author_id = :article_author");
+		$total_pages_pdo->bindParam(':article_author', $article_author, PDO::PARAM_INT);
+		$total_pages_pdo->execute();
+		$total_rows = $total_pages_pdo->fetchColumn();
+		$total_pages = ceil($total_rows / $limit);
+		$Articles_return = $this->conn->prepare("SELECT * FROM articles_authors WHERE author_id = :article_author ORDER BY id DESC LIMIT :start_Article, :limit");
+		$Articles_return->bindParam(':article_author', $article_author, PDO::PARAM_INT);
 		$Articles_return->bindParam(':start_Article', $start_Article, PDO::PARAM_INT);
 		$Articles_return->bindParam(':limit', $limit, PDO::PARAM_INT);
 		$Articles_return->execute();
