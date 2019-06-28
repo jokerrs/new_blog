@@ -1,4 +1,3 @@
-
         <h1 class="my-4">Zadatak 1
           
         </h1>
@@ -10,21 +9,25 @@
           $pagination_results = $pagination->getArticlePagination((int)'4', (int)$strana);
           $ukupno_strana = $pagination_results[0];
 
-          foreach ($pagination_results[1] as  $objava_value) {
-            $content = substr($objava_value['content'], 0, 800);
+          foreach ($pagination_results[1] as  $objava_value) {  
+        $content = substr($objava_value['content'], 0, 800);
             $search = array("/<p[^>]*>[\s|&nbsp;]*<\/p>/","/<img[^>]+\>/i" );
             $replace = array("" , "(slika)");
             $content_clear = preg_replace($search, $replace, stripslashes($content));
           ?>
                   <!-- Blog Post -->
         <div class="card mb-4">
-        <img class="img-fluid rounded" src="<?php echo $objava_value['main_image']; ?>" alt="<?php echo $objava_value['title']; ?>">
+        <img class="img-fluid rounded" src="<?php echo $objava_value['main_image']; ?>" alt="<?php echo $objava_value['title']; ?>" height="300" width="750">
           <div class="card-body">
             <h2 class="card-title"><?= $objava_value['title']; ?></h2>
             <div class="row"></div>
 
-            <?= $content_clear."..."; ?>
-            
+            <?php 
+            $tidy = new Tidy();
+            $tidy->parseString($content_clear."...");
+            $tidy->cleanRepair();
+            echo $tidy;
+            ?>
           </div>
           <div class="card-footer text-muted">
             Posted on <?= gmdate("F j Y, g:iA", strtotime($objava_value['created_time'])); ?> by
