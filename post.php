@@ -28,7 +28,7 @@
         <!-- Author -->
         <p class="lead">
           by
-          <?php echo "<a href=\"".$link_sajta."index.php?author=".$author_id."\">".$author."</a>" ?>
+          <?php echo "<a href=\"".$link_sajta."index.php?stranica=author&author=".$author_id."\">".$author."</a>" ?>
         </p>
 
         <hr>
@@ -39,13 +39,20 @@
         <hr>
 
         <!-- Preview Image -->
-        <img class="img-fluid rounded" src="<?php echo $image; ?>" alt="<?php echo $title; ?>">
+        <img class="img-fluid rounded" src="<?php echo $image; ?>" alt="<?php echo $title; ?>" height="300" width="750">
 
         <hr>
 
         <!-- Post Content -->
-        <?php echo stripslashes($content);
+        <?= stripslashes($content); ?>
 
+        <hr>
+
+        <!-- Date/Time -->
+        <p>Posted on <?php echo gmdate("F j Y, g:iA", strtotime($created)); ?> <small>by <?php echo "<a href=\"".$link_sajta."index.php?author=".$author_id."\">".$author."</a>" ?></small></p>
+
+        <hr>
+        <?php
             }else{
             include "404.php";
            }
