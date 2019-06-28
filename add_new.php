@@ -54,6 +54,24 @@ tinymce.init({
     ],
   images_upload_url : 'tinymce_image_upload_plugin.php',
     automatic_uploads : false,
+    style_formats: [
+    {
+        title: 'Image Left',
+        selector: 'img',
+        styles: {
+            'float': 'left', 
+            'margin': '0 10px 0 10px'
+        }
+     },
+     {
+         title: 'Image Right',
+         selector: 'img', 
+         styles: {
+             'float': 'right', 
+             'margin': '0 0 10px 10px'
+         }
+     }
+],
 
     images_upload_handler : function(blobInfo, success, failure) {
       var xhr, formData;
@@ -215,7 +233,7 @@ $(document).ready(function(){
   var name = document.getElementById("file").files[0].name;
   var form_data = new FormData();
   var ext = name.split('.').pop().toLowerCase();
-  if(jQuery.inArray(ext, ['gif','png','jpg','jpeg']) == -1) 
+  if(jQuery.inArray(ext, ['gif','png','jpg','jpeg', 'jfif']) == -1) 
   {
    alert("Slika je loseg formata");
   }
