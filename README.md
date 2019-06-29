@@ -1,5 +1,6 @@
 
 
+
 # Blog aplikacija
 
  1. [Konfiguracija servera](#konfiguracija-servera)
@@ -49,12 +50,12 @@
 
  - Na istoj stranici autor tj korisnik može da odabere koju objavu želi da obriše ili izmeni, da naglasim još jednom samo objave koje je objavio isti autor tj može da izmeni sam svoje objave.
  - Na toj stranici korisnik može da poleda ceo sadržaj objave tako što će da klikne na link *Pogledaj ceo saržaj/Izmeni/Obriši*
-	
-	![](https://joker.rs/images/new_blog/pogledajizmeniobrisi.png)
-	
+  
+  ![](https://joker.rs/images/new_blog/pogledajizmeniobrisi.png)
+  
 
  - Kada korisnik pritisne na link otvara se pod-tabela za izabranu objavu
-![](https://joker.rs/images/new_blog/pod_tabela.png)    		
+![](https://joker.rs/images/new_blog/pod_tabela.png)        
    - Tu korisnik može da izabere da li želi da obriše objavu ili je izmeni.
    - Takođe može da vidi ceo saržaj objave kao i datum i vreme kada je ista uneta
 ## Izmena objava
@@ -82,10 +83,34 @@
 - Ukoliko nije autor objave, izaćiće obaveštenje kako ne moe da obriše objavu
 
  ![](https://joker.rs/images/new_blog/greskabrisanje.png)
-	
+  
 ## Opcije krajnjeg korisnika
 
- 1. Pregled svih objava
- 2. Pregled objava po autoru
- 3. Pregled zasebne objave
+ 1. [Pregled svih objava](#Pregled-svih-objava)
+ 2. [Pregled objava po autoru](#Pregled-objava-po-autoru)
+ 3. [Pregled zasebne objave](#Pregled-zasebne-objave)
 
+### Pregled svih objava
+- Prilikom posete samog bloga, prvo što vidi krajnji korisnik jeste početna strana bloga, koja sadrži:
+  -  Sa leve strane četiri članka. Prvi članak je poslednje dodati članak, a drugi je dodat pre nje i tako dalje.
+  - Sa desne strane kao što vidimo imamo deset nasumičnih naslova, koji vode ka istim člancima.
+  - U gornjem desnom uglu možemo videti da piše *Pocetna* i *Admin panel*, prilikom klika na link *Početna* on nas vodi ka početnoj strani samog bloga. Dok *Admin panel * nas vodi u poseban deo za autore, gde mogu da dodaju, menjaju i brišu članke. Ukoliko autor nije prijavljen, umestno *Admin panel* imaćemo link za prijavu i pri tome će pisati *Login*
+  - Ispod četvrtog tj poslednjeg članka na početnoj strani, imamo paginaciju kojom možemo da listamo dalje članke.
+  - Takođe sam članak sadrži dva linka, tj link od autora i link ka istom članku.
+  - Prilikom klika na ime autora idemo na poseban deo bloga koji nam prikazuje sve članke od odabranog autora.
+  - Prilikom klika na "Više" link nas vodi na samu stranicu od tog članka, gde ga možemo pročitati u celosti.
+
+![](https://joker.rs/images/new_blog/pocetna.png)
+
+### Pregled objava po autoru
+
+- Ukoliko krajnji korisnik klikne na ime autora u bilo kom delu bloga, link će ga odvesti na stranicu na kojoj su prikazani sve objave izabranog autora.
+- Isto tako kao i na početnoj strani imamo više delova sajta koji su intentični u oba slučaja. Stim što ovde imamo i ime autora kojeg smo odabrali.
+
+ ![](https://joker.rs/images/new_blog/blogautor.png)
+
+### Pregled zasebne objave
+- Sve ostalo je isto kao i na predhodnim delovima sajta. Osim što u ovom slučaju imamo sa leve strane samo jedan članak i čitav njegov sadržaj sa njegovom glavnom slikom i sa slikama koje se nalaze u samom sadržaju članka. Kao što se može isto videti na priloženoj fotografiji.
+- Vidimo koje autor članka, kada je postavljen članak i kada je izmenjen članak.
+
+![](https://joker.rs/images/new_blog/zasebnaobjava.png)
