@@ -74,16 +74,17 @@ class Articles{
 		}
 	}
 
-	function setupdateArticle($article_id, $article_title, $article_content){
+	function setupdateArticle($article_id, $article_title, $article_content, $article_image){
 		$this->article_title 	= $article_title;
 		$this->article_content 	= $article_content;
 		$this->article_id       = $article_id;
+		$this->article_image	= $article_image;
 	}
 
 		// Updating an article by ID
-	function updateArticle($article_id, $article_title, $article_content){
-		$updateArticle = $this->conn->prepare("UPDATE articles SET title=?, content=?, author=?, update_time=? WHERE id=? ");
-		$updateArticle->execute([$article_title, $article_content, date('Y-m-d H:i:s'), $article_id]); 
+	function updateArticle($article_id, $article_title, $article_content, $article_image){
+		$updateArticle = $this->conn->prepare("UPDATE articles SET title=?, content=?, main_image=?, update_time=? WHERE id=? ");
+		$updateArticle->execute([$article_title, $article_content, $article_image, date('Y-m-d H:i:s'), $article_id]); 
 		return true;
 	}
 
