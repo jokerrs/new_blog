@@ -1,17 +1,15 @@
-        <?php
- 			$author_id = $_GET['author'];
- 			$author = $conn->prepare("SELECT author FROM articles_authors WHERE author_id = ?");
- 			$author->execute([$author_id]);
- 			foreach ($author as $authorname) {
- 				$author_name = $authorname['author'];
- 			}
+<?php
+      $author_id = $_GET['author'];
+      $author = $conn->prepare("SELECT author FROM articles_authors WHERE author_id = ?");
+      $author->execute([$author_id]);
+      foreach ($author as $authorname) {
+        $author_name = $authorname['author'];
+      }
         ?>
-
-        <h1 class="my-4">Zadatak 1 | <?= $author_name ?>
-          
-        </h1> 
-
-        <?php 
+<h1 class="my-4">Zadatak 1 |
+    <?= $author_name ?>
+</h1>
+<?php 
 
        
         $strana = (!isset($_GET['strana'])?1:$_GET['strana']);
@@ -20,40 +18,40 @@
           $pagination_results = $pagination->getArticlePaginationAuthorPage((int)'4', (int)$strana, (int)$author_id);
           $ukupno_strana = $pagination_results[0];
 
-          foreach ($pagination_results[1] as  $objava_value) {	
-		    $content = substr($objava_value['content'], 0, 800);
+          foreach ($pagination_results[1] as  $objava_value) {  
+        $content = substr($objava_value['content'], 0, 800);
             $search = array("/<p[^>]*>[\s|&nbsp;]*<\/p>/","/<img[^>]+\>/i" );
             $replace = array("" , "(slika)");
             $content_clear = preg_replace($search, $replace, stripslashes($content));
           ?>
-                  <!-- Blog Post -->
-        <div class="card mb-4">
-        <img class="img-fluid rounded" src="<?php echo $objava_value['main_image']; ?>" alt="<?php echo $objava_value['title']; ?>" height="300" width="750">
-          <div class="card-body">
-            <h2 class="card-title"><?= $objava_value['title']; ?></h2>
-            <div class="row"></div>
-
-            <?php 
+<!-- Blog Post -->
+<div class="card mb-4">
+    <img class="img-fluid rounded" src="<?php echo $objava_value['main_image']; ?>" alt="<?php echo $objava_value['title']; ?>" height="300" width="750">
+    <div class="card-body">
+        <h2 class="card-title">
+            <?= $objava_value['title']; ?>
+        </h2>
+        <div class="row"></div>
+        <?php 
             $tidy = new Tidy();
             $tidy->parseString($content_clear."...");
             $tidy->cleanRepair();
             echo $tidy;
             ?>
-          </div>
-          <div class="card-footer text-muted">
-            Posted on <?= gmdate("F j Y, g:iA", strtotime($objava_value['created_time'])); ?> by
-            <?= "<a href=\"".$link_sajta."index.php?stranica=author&author=".$objava_value['author_id']."\">".$objava_value['author']."</a>" ?>
-            <a href="<?= $link_sajta."/index.php?stranica=post&objava=".$objava_value['id']; ?>" class="float-right btn btn-primary">Vise &rarr;</a>
-          </div>
-        </div>
-
-          <?php
+    </div>
+    <div class="card-footer text-muted">
+        Posted on
+        <?= gmdate("F j Y, g:iA", strtotime($objava_value['created_time'])); ?> by
+        <?= "<a href=\"".$link_sajta."index.php?stranica=author&author=".$objava_value['author_id']."\">".$objava_value['author']."</a>" ?>
+        <a href="<?= $link_sajta."/index.php?stranica=post&objava=".$objava_value['id']; ?>" class="float-right btn btn-primary">Vise &rarr;</a>
+    </div>
+</div>
+<?php
           }
         ?>
-
-        <!-- Pagination -->
-        <ul class="pagination justify-content-center mb-4">
-<?php
+<!-- Pagination -->
+<ul class="pagination justify-content-center mb-4">
+    <?php
       
         if($strana+4 > $ukupno_strana){
           $srednji_index = $ukupno_strana-4;
