@@ -8,18 +8,24 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 if(isset($_SESSION['uid'])){
 	include_once ("../../konfiguracija.php");
 	include_once ("../../klase/objave.php");
-	$objave = new Articles($conn);
+	$author_id = $_SESSION['uid'];
 	$data = json_decode(file_get_contents("php://input"));
-	if(!empty($data->delete)){
-		$delete = $data->delete;
-		if($objave->deleteArticle($delete)){
-			http_response_code(200);
-		}else{
-	        http_response_code(503);
-	    }
+	$delete = $data->id;
+			$objave = new Articles($conn);
+	if($objave->getIsAuthor($author_id, $delete)){
+		if(!empty($data->id)){
+			if($objave->deleteArticle($delete)){
+				http_response_code(200);
+			}else{
+			    http_response_code(503);
+			    }
+			}else{
+				http_response_code(400);
+			}
 	}else{
-		http_response_code(400);
+		http_response_code(403.3);
 	}
+
 }else{
 		http_response_code(403.3);
 }
