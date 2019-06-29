@@ -1,4 +1,5 @@
 
+
 # Blog aplikacija
 
 ## Konfiguracija servera
@@ -16,8 +17,8 @@
 
 ## Korisničke opcije
 
- 1. Dodavanje novih objava
- 2. Lista svih objava sa opcijom odabira autora 
+ 1. [Dodavanje novih objava](https://github.com/jokerrs/new_blog#dodavanje-novih-objava)
+ 2. [Lista svih objava sa opcijom odabira autora](https://github.com/jokerrs/new_blog#lista-svih-objava-sa-opcijom-odabira-autora) 
  3. Izmena objava
  4. Brisanje objava
 
