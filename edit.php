@@ -1,11 +1,16 @@
 <?php    
 
-  // Pocetak sesije
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+    // Pocetak sesije
     session_start();
-  // Konekcija sa bazom podataka (MySql)
+    // Konekcija sa bazom podataka (MySql)
     require_once ("./konfiguracija.php");
     // Klasa korisnici.php
     require_once ("./klase/korisnici.php");
+    // Klasa korisnici.php
+    require_once ("./klase/objave.php");
 
     if(!isset($_SESSION['uid'])){
           header('Location: login.php');
@@ -17,9 +22,11 @@
         $name = $User_data_value['name'];
         $lastname = $User_data_value['lastname'];
       }
+      
     if(!isset($_GET['id'])){
         header('Location: post_list.php');
     }
+
 
 ?>
 <!DOCTYPE html>
@@ -33,8 +40,6 @@
     <title>Admin</title>
     <!-- Bootstrap core CSS -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
-    <script>tinymce.init({selector:'textarea'});</script>
     <!-- Custom styles for this template -->
     <link href="./css/blog-post.css" rel="stylesheet">
 </head>
@@ -53,7 +58,7 @@
                     <li class="nav-item"><a class="nav-link" href="<?= $link_sajta; ?>">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?= $link_sajta."admin.php"; ?>">Pocetna</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?= $link_sajta."post_list.php"; ?>">Lista postova</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= $link_sajta."add_new.php"; ?>">Dodaj novi post</a></li>
+                    <li class="nav-item active" active><a class="nav-link" href="<?= $link_sajta."add_new.php"; ?>">Dodaj novi post</a></li>
                     <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
                 </ul>
             </div>
@@ -62,10 +67,48 @@
     <!-- Page Content -->
     <div class="container">
         <div class="row">
+             <?php 
+                $update_post = new Articles($conn);
+                $res = $update_post->getArticle((int)$_GET['id']);
+
+                foreach ($res as $update_post_value) {
+                
+                  echo '
+                            <div class="col-lg-8 center">
+                    <form id="EditArticle" method="POST">
+                        <div id="success" class="alert alert-success" style="display:none">
+                            <strong>Uspesno</strong> ste izmenili objavu. Mozete pogledati clanak <a href="'.$link_sajta.'index.php?stranica=post&objava='.$_GET['id'].'">ovde</a>
+                        </div>
+                        <div id="invalid" class="alert alert-danger" style="display:none">
+                            <strong>Greska!</strong><span id="invalidM"></span>
+                        </div>
+                        <label for="title">Naslov</label>
+                        <input class="form-control" value="'.$update_post_value['title'].'" id="title" name="title" type="text" required>
+                        <div class="form-group">
+                            <label for="content">Sadrzaj</label>
+                            <textarea class="form-control" id="content" name="content" rows="15">'.stripslashes($update_post_value['content']).'</textarea>
+                        </div>
+
+                    <input class="form-control" type="hidden" id="author_id" name="author_id" value="'.$_SESSION['uid'].'">
+                    <input class="form-control" type="hidden" id="article_id" name="article_id" value="'.$_GET['id'].'">
+                    <span id="span_image">
+                      <input class="form-control" type="hidden" id="main_image" name="main_image" value="'.$update_post_value['main_image'].  '">
+                    </span>
+                        <button type="submit" class="btn btn-primary">Izmeni</button>
+                    </form>
+                </div>
+                <div class="col-lg-4 center">
+                    <br /><br />
+                    <form id="imageUpload">
+                        <span id="uploaded_image"><img src="'.$update_post_value['main_image'].'" class="img-thumbnail" /></span><br />
+                        <input id="file" type="file" accept="image/*" name="file" /><br />
+                        <form>
+                </div>
+                  ';
+                }
+              ?>
         </div>
         <!-- /.row -->
-        <script src="./js/jquery.min.js"></script>
-        <script src="./js/bootstrap.min.js"></script>
     </div>
     <!-- /.container -->
     <!-- Footer -->
@@ -77,7 +120,13 @@
         </div>
         <!-- /.container -->
     </footer>
-    <!-- Bootstrap core JavaScript -->
+    <!-- JavaScript -->
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/tinymce/tinymce.min.js"></script>
+    <script src="./js/tinymce/jquery.tinymce.min.js"></script>
+    <script src="./js/tinymce.js"></script>
+    <script type="text/javascript" src="./js/edit.js"></script>
 </body>
 
 </html>
