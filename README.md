@@ -68,13 +68,18 @@
 ## Brisanje objava
    - Prilikom na klika na dugme za brisanje objave, izaćiće mu prozor sa pitanjem "Da li ste sigurni da želite da obrišete ovaj post?". Kao i sa obaveštenjem da se 
  
+
     ![](https://joker.rs/images/new_blog/brisanje.png)
+
 	
 	- Ukoliko autor izabrao svoju objavu da obrise dobiće obaveštenje da je uspešno obrisao objavu
+
 	
 	![](https://joker.rs/images/new_blog/obrisano.png)
+
 	
 	- Ukoliko nije autor objave, izaćiće obaveštenje kako ne moe da obriše objavu
+
 	
 	![](https://joker.rs/images/new_blog/greskabrisanje.png)
 	
