@@ -19,7 +19,7 @@
             }
         }
     }elseif(isset($_SESSION['uid'])){
-                header('Location: admin.php');;
+                header('Location: admin.php');
     }else{
 ?>
 <!doctype html>
