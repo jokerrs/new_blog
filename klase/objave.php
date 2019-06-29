@@ -133,4 +133,21 @@ class Articles{
 		return  array( $total_pages, $Articles_return->fetchAll());
 
 	} 
+
+	function setIsAuthor($author_id, $article_id){
+		$this->author_id = $author_id;
+		$this->article_id = $article_id;
+	}
+	function getIsAuthor($author_id, $article_id){
+		$IsAuthor = $this->conn->prepare("SELECT author FROM articles WHERE id = ?");
+		$IsAuthor->execute([$article_id]);
+		
+		foreach($IsAuthor as $ress){
+			if($ress['author']==$author_id){
+				return true;
+			}else{
+				return false;
+			}
+		}
+	}
 }
