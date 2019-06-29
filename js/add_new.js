@@ -9,7 +9,7 @@
          e.preventDefault();
          $.ajax({
              type: "POST",
-             url: 'http://localhost/novi_projekat/api/articles/create.php',
+             url: './api/articles/create.php',
              data: data,
              statusCode: {
                  200: function() {

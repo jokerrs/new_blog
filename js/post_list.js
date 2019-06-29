@@ -22,7 +22,7 @@ function format(d) {
 $(document).ready(function() {
 
     var table = $('#post_list').DataTable({
-        "ajax": "http://localhost/novi_projekat/api/articles/read.php",
+        "ajax": "./api/articles/read.php",
         "columns": [
             { "data": "id" },
             { "data": "title" },
@@ -94,7 +94,7 @@ $(document).ready(function() {
         }).then((result) => {
             if (result.value) {
                 $.ajax({
-                    url: "http://localhost/novi_projekat/api/articles/delete.php",
+                    url: "./api/articles/delete.php",
                     method: "POST",
                     data: id,
                     statusCode: {

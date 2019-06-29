@@ -11,7 +11,7 @@
             image_class_list: [
                 { title: 'Responsive image', value: 'img-fluid rounded' }
             ],
-            images_upload_url: 'tinymce_image_upload_plugin.php',
+            images_upload_url: './tinymce_image_upload_plugin.php',
             automatic_uploads: false,
             style_formats: [{
                     title: 'Image Left',

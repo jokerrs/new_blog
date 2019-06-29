@@ -10,7 +10,7 @@
          e.preventDefault();
          $.ajax({
              type: "POST",
-             url: 'http://localhost/novi_projekat/api/articles/edit.php',
+             url: './api/articles/edit.php',
              data: data,
              statusCode: {
                  200: function() {
@@ -61,7 +61,7 @@
          } else {
              form_data.append("file", document.getElementById('file').files[0]);
              $.ajax({
-                 url: "upload.php",
+                 url: "./upload.php",
                  method: "POST",
                  data: form_data,
                  contentType: false,
