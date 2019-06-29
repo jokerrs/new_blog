@@ -13,6 +13,7 @@
         $author_id = $objavaData_values['author_id'];
         $author = $objavaData_values['author'];
         $created = $objavaData_values['created_time'];
+        $updated = $objavaData_values['update_time'];
         $image = $objavaData_values['main_image'];
     }
 
@@ -34,8 +35,13 @@
         <hr>
 
         <!-- Date/Time -->
-        <p>Posted on <?php echo gmdate("F j Y, g:iA", strtotime($created)); ?></p>
-
+        <?php 
+        if($created == $updated){ 
+            echo '<p>Posted on '.gmdate("F j Y, g:iA", strtotime($created)).'</p>';
+        }elseif($created != $updated){
+            echo '<p>Posted on '.gmdate("F j Y, g:iA", strtotime($created)).' | Updated on '.gmdate("F j Y, g:iA", strtotime($updated)).'</p>';
+        }
+        ?>
         <hr>
 
         <!-- Preview Image -->
@@ -48,9 +54,14 @@
 
         <hr>
 
-        <!-- Date/Time -->
-        <p>Posted on <?php echo gmdate("F j Y, g:iA", strtotime($created)); ?> <small>by <?php echo "<a href=\"".$link_sajta."index.php?author=".$author_id."\">".$author."</a>" ?></small></p>
-
+               <!-- Date/Time -->
+        <?php 
+        if($created == $updated){ 
+            echo '<p>Posted on '.gmdate("F j Y, g:iA", strtotime($created)).' <small>by <a href="'.$link_sajta.'index.php?stranica=author&author='.$author_id.'">'.$author.'</a></small></p>';
+        }elseif($created != $updated){
+            echo '<p>Posted on '.gmdate("F j Y, g:iA", strtotime($created)).' | Updated on '.gmdate("F j Y, g:iA", strtotime($updated)).' <small>by <a href="'.$link_sajta.'index.php?stranica=author&author='.$author_id.'">'.$author.'</a></small></p>';
+        }
+        ?>
         <hr>
         <?php
             }else{

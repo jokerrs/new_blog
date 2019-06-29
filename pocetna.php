@@ -30,9 +30,17 @@
             ?>
           </div>
           <div class="card-footer text-muted">
-            Posted on <?= gmdate("F j Y, g:iA", strtotime($objava_value['created_time'])); ?> by
+                  <!-- Date/Time -->
+              <?php 
+
+              if($objava_value['created_time'] == $objava_value['update_time']){ 
+                  echo '<p>Posted on '.gmdate("F j Y, g:iA", strtotime($objava_value['created_time'])).'';
+              }elseif($objava_value['created_time'] != $objava_value['update_time']){
+                  echo '<p>Posted on '.gmdate("F j Y, g:iA", strtotime($objava_value['created_time'])).'</p><p>Updated on '.gmdate("F j Y, g:iA", strtotime($objava_value['update_time'])).'';
+              }
+              ?> by
             <?= "<a href=\"".$link_sajta."index.php?stranica=author&author=".$objava_value['author_id']."\">".$objava_value['author']."</a>" ?>
-            <a href="<?= $link_sajta."/index.php?stranica=post&objava=".$objava_value['id']; ?>" class="float-right btn btn-primary">Vise &rarr;</a>
+            <a href="<?= $link_sajta."/index.php?stranica=post&objava=".$objava_value['id']; ?>" class="float-right btn btn-primary">Vise &rarr;</a></p>
           </div>
         </div>
 

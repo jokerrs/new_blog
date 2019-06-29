@@ -18,7 +18,9 @@ if($broj > 0){
 			"author_id" => $author_id,
 			"author" => $author,
 			"main_image" => $main_image,
-			"created_time" => gmdate("F j Y, g:iA", strtotime($created_time))
+			"created_time" => gmdate("F j Y, g:iA", strtotime($created_time)),
+			"update_time" => gmdate("F j Y, g:iA", strtotime($update_time))
+
 		);
 		array_push($objave_arr['data'], $objava);
 	}
