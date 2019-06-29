@@ -6,6 +6,7 @@
  -  Ubuntu **>= 16.04**
  -  PHP **>= 7.0** (**PDO**,  **Tidy**, **BCrypt**)
  -  Mysql **>= 14**
+ - Apache **>= 2.4**
  
 ## Instalacija
  -  Promeniti u fajlu **konfiguracija.php** sledeće varijable
@@ -14,13 +15,14 @@
 	- $username (U odgovarakući username za mysql bazu podataka)
 	- $dbhost (U odgovarajući database hose, u većini slučajeva je to *localhost*)
 	- $dbname (U odgovarajuće ima baze koja je uneta u ovom slučaju je to *zadatak1*, i preporučuje se da ostane ta ista)
+- Importovati bazu podataka, koja se nalazi u repozitorijumu.
 
 ## Korisničke opcije
 
  1. [Dodavanje novih objava](https://github.com/jokerrs/new_blog#dodavanje-novih-objava)
  2. [Lista svih objava sa opcijom odabira autora](https://github.com/jokerrs/new_blog#lista-svih-objava-sa-opcijom-odabira-autora) 
- 3. Izmena objava
- 4. Brisanje objava
+ 3. [Izmena objava](https://github.com/jokerrs/new_blog#izmena-objava)
+ 4. [Brisanje objava](https://github.com/jokerrs/new_blog#brisanje-objava)
 
 ### Dodavanje novih objava
 ![](https://joker.rs/images/new_blog/add_new.png)
@@ -50,6 +52,20 @@
 ![](https://joker.rs/images/new_blog/pod_tabela.png)    		
    - Tu korisnik može da izabere da li želi da obriše objavu ili je izmeni.
    - Takođe može da vidi ceo saržaj objave kao i datum i vreme kada je ista uneta
+## Izmena objava
+- Prilkom klika na dugme **Izmeni post**, pretraživač će autora tj korisnika da prebaci na novu stranicu na kojoj može da izmeni članak.
+![](https://joker.rs/images/new_blog/izmenaclanka.png)
+ 
+  - Ukoliko autor želi da izmeni glavnu sliku članka, dovoljno je samo da klikne na dugme "Odaberi datoteku".
+  - Ovde važi isto pravilo ao i za pravljenje novog članka, tj koristi se TinyMce text editor koji nam omogućava brže i lakše manipulisanje sa sadržajem članka.
+  - Takođe ukoliko korisnik koji nije autor izabranog članka pokuša da izmeni članak, neće uspeti, obzirom da nije autor istog. Tako da samo autor može da menja svoj članak.
+  - Kada je uspešno izmenjen članak, autoru tj korisniku izlazi poruka da je članak uspešno izmenjen
+  ![](https://joker.rs/images/new_blog/uspesnaizmena.png)
+     - Takođe može da pogleda članak pritiskom na link "ovde"
+  - Kada je članak izmenjen na delu sajta za krajnjeg korisnika se pojavljuje datum i vreme kada je čllanak izmenjen.
+  ![](https://joker.rs/images/new_blog/slikavremena.png)
+  
+## Brisanje objava
    - Prilikom na klika na dugme za brisanje objave, izaćiće mu prozor sa pitanjem "Da li ste sigurni da želite da obrišete ovaj post?". Kao i sa obaveštenjem da se 
  
     ![](https://joker.rs/images/new_blog/brisanje.png)
