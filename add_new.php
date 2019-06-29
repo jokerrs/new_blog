@@ -28,9 +28,8 @@
     <meta name="author" content="">
     <title>Admin</title>
     <!-- Bootstrap core CSS -->
+
     <link href="./css/bootstrap.min.css" rel="stylesheet">
-    <script src="./js/tinymce/tinymce.min.js"></script>
-    <script src="./js/tinymce/jquery.tinymce.min.js"></script>
     <!-- Custom styles for this template -->
     <link href="./css/blog-post.css" rel="stylesheet">
 </head>
@@ -87,13 +86,8 @@
             </div>
         </div>
         <!-- /.row -->
-        <script src="./js/jquery.min.js"></script>
-        <script src="./js/bootstrap.min.js"></script>
     </div>
     <!-- /.container -->
-
-    <script src="./js/tinymce.js"></script>
-    <script type="text/javascript" src="./js/add_new.js"></script>
     <!-- Footer -->
     <footer class="py-5 bg-dark">
         <div class="container">
@@ -103,7 +97,13 @@
         </div>
         <!-- /.container -->
     </footer>
-    <!-- Bootstrap core JavaScript -->
+    <!-- JavaScript -->
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/tinymce/tinymce.min.js"></script>
+    <script src="./js/tinymce/jquery.tinymce.min.js"></script>
+    <script src="./js/tinymce.js"></script>
+    <script type="text/javascript" src="./js/add_new.js"></script>
 </body>
 
 </html>
