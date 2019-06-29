@@ -2,6 +2,11 @@
 
 # Blog aplikacija
 
+ 1. [Konfiguracija servera](#konfiguracija-servera)
+ 2. [Instalacija](#Instalacija)
+ 3. [Korisničke opcije](#korisni%C4%8Dke-opcije)
+ 4. [Opcije krajnjeg korisnika](#opcije-krajnjeg-korisnika)
+
 ## Konfiguracija servera
  -  Ubuntu **>= 16.04**
  -  PHP **>= 7.0** (**PDO**,  **Tidy**, **BCrypt**)
@@ -10,19 +15,19 @@
  
 ## Instalacija
  -  Promeniti u fajlu **konfiguracija.php** sledeće varijable
- 	- $link_sajta (U odgovarajući domen na kome će biti blog aplikacija)
-	- $password (U odgovarajući password za mysql bazu podataka)
-	- $username (U odgovarakući username za mysql bazu podataka)
-	- $dbhost (U odgovarajući database hose, u većini slučajeva je to *localhost*)
-	- $dbname (U odgovarajuće ima baze koja je uneta u ovom slučaju je to *zadatak1*, i preporučuje se da ostane ta ista)
+  - $link_sajta (U odgovarajući domen na kome će biti blog aplikacija)
+  - $password (U odgovarajući password za mysql bazu podataka)
+  - $username (U odgovarakući username za mysql bazu podataka)
+  - $dbhost (U odgovarajući database hose, u većini slučajeva je to *localhost*)
+  - $dbname (U odgovarajuće ima baze koja je uneta u ovom slučaju je to *zadatak1*, i preporučuje se da ostane ta ista)
 - Importovati bazu podataka, koja se nalazi u repozitorijumu.
 
 ## Korisničke opcije
 
- 1. [Dodavanje novih objava](https://github.com/jokerrs/new_blog#dodavanje-novih-objava)
- 2. [Lista svih objava sa opcijom odabira autora](https://github.com/jokerrs/new_blog#lista-svih-objava-sa-opcijom-odabira-autora) 
- 3. [Izmena objava](https://github.com/jokerrs/new_blog#izmena-objava)
- 4. [Brisanje objava](https://github.com/jokerrs/new_blog#brisanje-objava)
+ 1. [Dodavanje novih objava](#dodavanje-novih-objava)
+ 2. [Lista svih objava sa opcijom odabira autora](#lista-svih-objava-sa-opcijom-odabira-autora) 
+ 3. [Izmena objava](#izmena-objava)
+ 4. [Brisanje objava](#brisanje-objava)
 
 ### Dodavanje novih objava
 ![](https://joker.rs/images/new_blog/add_new.png)
