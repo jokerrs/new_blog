@@ -47,7 +47,7 @@
           <li class="nav-item"><?php
           if(isset($_SESSION['uid'])){
             echo "
-            <a class=\"nav-link\" href=\"admin.php\">Admin panel</a>";
+            <a class=\"nav-link\" href=\"post_list.php\">Admin panel</a>";
           }else{ ?>
             <a class="nav-link" href="login.php">Login</a>
           <?php } ?>

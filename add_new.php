@@ -46,7 +46,6 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link" href="<?= $link_sajta; ?>">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= $link_sajta."admin.php"; ?>">Pocetna</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?= $link_sajta."post_list.php"; ?>">Lista postova</a></li>
                     <li class="nav-item active" active><a class="nav-link" href="<?= $link_sajta."add_new.php"; ?>">Dodaj novi post</a></li>
                     <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
@@ -98,11 +97,11 @@
         <!-- /.container -->
     </footer>
     <!-- JavaScript -->
-    <script src="./js/jquery.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/tinymce/tinymce.min.js"></script>
-    <script src="./js/tinymce/jquery.tinymce.min.js"></script>
-    <script src="./js/tinymce.js"></script>
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript" src="./js/tinymce/jquery.tinymce.min.js"></script>
+    <script type="text/javascript" src="./js/tinymce.js"></script>
     <script type="text/javascript" src="./js/add_new.js"></script>
 </body>
 

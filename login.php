@@ -19,7 +19,7 @@
             }
         }
     }elseif(isset($_SESSION['uid'])){
-                header('Location: admin.php');
+                header('Location: post_list.php');
     }else{
 ?>
 <!doctype html>
@@ -92,14 +92,14 @@
     e.preventDefault();
     $.ajax({
        type: "POST",
-       url: 'login.php',
+       url: './login.php',
       data: {username:$("#username").val(), password:$("#password").val()},
        success: function(data)
        {
           if (data === "ok") {
             $("#successlogin").show(500);
-            setTimeout(function() { $("#successlogin").hide(500); }, 2500);
-            setTimeout(function(){ document.location = 'admin.php';}, 3000 ); 
+            setTimeout(function() { $("#successlogin").hide(500); }, 1500);
+            setTimeout(function(){ document.location = 'post_list.php';}, 3000 ); 
           }
           else {
             $("#invalidlogin").show(500);

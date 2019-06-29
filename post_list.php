@@ -28,9 +28,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Admin</title>
-    <!-- SweetAlert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-    <!-- Bootstrap core CSS -->
+        <!-- Bootstrap core CSS -->
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="./css/blog-post.css" rel="stylesheet">
@@ -48,7 +46,6 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link" href="<?= $link_sajta; ?>">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= $link_sajta."admin.php"; ?>">Pocetna</a></li>
                     <li class="nav-item active" active><a class="nav-link" href="<?=$link_sajta."post_list.php"; ?>">Lista postova</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?= $link_sajta."add_new.php"; ?>">Dodaj novi post</a></li>
                     <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
@@ -65,10 +62,6 @@
                 text-align: center;
             }
             </style>
-            <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
-            <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-            <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
             <div class="container">
                 <table id="post_list" class="table table-striped table-bordered" width="100%">
                     <thead>
@@ -89,7 +82,7 @@
                     </tfoot>
                 </table>
             </div>
-            <script type="text/javascript" src="./js/post_list.js"></script>
+
         </div>
         <!-- /.row -->
     </div>
@@ -104,6 +97,13 @@
         <!-- /.container -->
     </footer>
     <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" src="./js/post_list.js"></script>
+    <!-- SweetAlert2 -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 </body>
 
 </html>
