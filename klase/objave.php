@@ -9,6 +9,7 @@ class Articles{
 	private $article_author;
 	private $article_content;
 	private $article_title;
+	private $article_image;
 	private $limit;
 	private $page;
 
@@ -56,10 +57,11 @@ class Articles{
 		return $getArticle;
 	}
 
-	function setInsertArticle($article_title, $article_content, $article_author){
+	function setInsertArticle($article_title, $article_content, $article_author, $article_image){
 		$this->article_title        = $article_title;
 		$this->article_content 	    = $article_content;
 		$this->article_author	    = $article_author;
+		$this->article_image		= $article_image;
 	}
 
 
