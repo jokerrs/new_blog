@@ -41,8 +41,9 @@
 ![](https://joker.rs/images/new_blog/pod_tabela.png)    		
    - Tu korisnik može da izabere da li želi da obriše objavu ili je izmeni.
    - Takođe može da vidi ceo saržaj objave kao i datum i vreme kada je ista uneta
-  - Prilikom na klika na dugme za brisanje objave, izaćiće mu prozor sa pitanjem "Da li ste sigurni da želite da obrišete ovaj post?". Kao i sa obaveštenjem da se 
- ![](https://joker.rs/images/new_blog/brisanje.png)
+   - Prilikom na klika na dugme za brisanje objave, izaćiće mu prozor sa pitanjem "Da li ste sigurni da želite da obrišete ovaj post?". Kao i sa obaveštenjem da se 
+ 
+    ![](https://joker.rs/images/new_blog/brisanje.png)
 	
 	- Ukoliko autor izabrao svoju objavu da obrise dobiće obaveštenje da je uspešno obrisao objavu
 	
