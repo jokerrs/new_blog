@@ -24,7 +24,7 @@ if(isset($_SESSION['uid'])){
 			        http_response_code(503);
 			    }
 			}else{
-				http_response_code(403)
+				http_response_code(403);
 			}
 		}else{
 		        http_response_code(404);
