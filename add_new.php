@@ -7,7 +7,7 @@
     require_once ("./klase/korisnici.php");
 
     if(!isset($_SESSION['uid'])){
-          header('Location: login.php');;
+          header('Location: login.php');
     }else{
       $getUserDataBysession = new Users($conn);
       $UserData = $getUserDataBysession->getUser($_SESSION['uid']);
