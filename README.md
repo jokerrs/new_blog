@@ -120,11 +120,11 @@
 ## Uneti korisnici
 
  1. Ana Anovic
-   - username: aanovic
-   - password: Nemanjabg44 
+     - username: aanovic
+     - password: Nemanjabg44 
 2. Marko Markovic
-  - username: mmarkovic
-  - password: Nemanjabg44
+     - username: mmarkovic
+     - password: Nemanjabg44
 3. Nemanja Jeremic
-  - username: admin
-  - password: Nemanjabg44
+     - username: admin
+     - password: Nemanjabg44
