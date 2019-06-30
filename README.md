@@ -16,11 +16,11 @@
  
 ## Instalacija
  -  Promeniti u fajlu **konfiguracija.php** sledeće varijable
-  - $link_sajta (U odgovarajući domen na kome će biti blog aplikacija)
-  - $password (U odgovarajući password za mysql bazu podataka)
-  - $username (U odgovarakući username za mysql bazu podataka)
-  - $dbhost (U odgovarajući database hose, u većini slučajeva je to *localhost*)
-  - $dbname (U odgovarajuće ima baze koja je uneta u ovom slučaju je to *zadatak1*, i preporučuje se da ostane ta ista)
+    - $link_sajta (U odgovarajući domen na kome će biti blog aplikacija)
+    - $password (U odgovarajući password za mysql bazu podataka)
+    - $username (U odgovarakući username za mysql bazu podataka)
+    - $dbhost (U odgovarajući database hose, u većini slučajeva je to *localhost*)
+    - $dbname (U odgovarajuće ima baze koja je uneta u ovom slučaju je to *zadatak1*, i preporučuje se da ostane ta ista)
 - Importovati bazu podataka, koja se nalazi u repozitorijumu.
 
 ## Korisničke opcije
