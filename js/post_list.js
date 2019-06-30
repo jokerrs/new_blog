@@ -4,7 +4,7 @@ function format(d) {
     return '<div class=" align-items-center justify-content-center"><table cellpadding="5" cellspacing="0" border="0" class="row align-items-center justify-content-center">' +
         '<tr>' +
         '<td>' +
-        '<a href="http://localhost/novi_projekat/edit.php?id=' + d.id + '">' +
+        '<a href="edit.php?id=' + d.id + '">' +
         '<button type="button" class="btn btn-primary">Izmeni post</button>' +
         '</a>' +
         '<button type="button" name="delete" class="btn btn-danger btn-xs delete" id="' + d.id + '">Obrisi</button>' +
