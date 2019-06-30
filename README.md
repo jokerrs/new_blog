@@ -1,12 +1,14 @@
 
 
 
+
 # Blog aplikacija
 
  1. [Konfiguracija servera](#konfiguracija-servera)
  2. [Instalacija](#Instalacija)
  3. [Korisničke opcije](#korisni%C4%8Dke-opcije)
  4. [Opcije krajnjeg korisnika](#opcije-krajnjeg-korisnika)
+ 5. [Uneti korisnici (username/password)](#Uneti-korisnici)
 
 ## Konfiguracija servera
  -  Ubuntu **>= 16.04**
@@ -114,3 +116,15 @@
 - Vidimo koje autor članka, kada je postavljen članak i kada je izmenjen članak.
 
 ![](https://joker.rs/images/new_blog/zasebnaobjava.png)
+
+## Uneti korisnici
+
+ 1. Ana Anovic
+   - username: aanovic
+   - password: Nemanjabg44 
+2. Marko Markovic
+  - username: mmarkovic
+  - password: Nemanjabg44
+3. Nemanja Jeremic
+  - username: admin
+  - password: Nemanjabg44
