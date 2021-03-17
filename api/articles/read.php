@@ -22,7 +22,7 @@ if($broj > 0){
 			"update_time" => gmdate("F j Y, g:iA", strtotime($update_time))
 
 		);
-		array_push($objave_arr['data'], $objava);
+		$objave_arr['data'][] = $objava;
 	}
  http_response_code(200);
  echo json_encode($objave_arr, JSON_PRETTY_PRINT);
