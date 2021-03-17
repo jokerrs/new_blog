@@ -9,7 +9,7 @@ if(isset($_SESSION['uid'])){
 	include_once ("../../konfiguracija.php");
 	include_once ("../../klase/objave.php");
 	$objave = new Articles($conn);
-	$data = json_decode(file_get_contents("php://input"));
+	$data = json_decode(file_get_contents("php://input"), true);
 	if(!empty($data->title) && !empty($data->content) && !empty($data->author_id)){
 		if(!empty($data->main_image)){
 			$title = $data->title;

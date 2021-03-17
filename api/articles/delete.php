@@ -9,7 +9,7 @@ if(isset($_SESSION['uid'])){
 	include_once ("../../konfiguracija.php");
 	include_once ("../../klase/objave.php");
 	$author_id = $_SESSION['uid'];
-	$data = json_decode(file_get_contents("php://input"));
+	$data = json_decode(file_get_contents("php://input"), true);
 	$delete = $data->id;
 	$objave = new Articles($conn);
 	if($objave->getIsAuthor($author_id, $delete)){
