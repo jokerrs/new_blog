@@ -6,7 +6,10 @@ include_once ("../../klase/objave.php");
 $objave = new Articles($conn);
 $rezultat = $objave->getArticles();
 $broj = $rezultat->rowCount();
-if($broj > 0){
+if($broj > 0) {
+    echo json_encode(array("message" => "Ni jedana objava nije nadjena."));
+    http_response_code(404) and die();
+}
 	$objave_arr = array();
 	$objave_arr['data'] = array();
 	while ($row = $rezultat->fetch(PDO::FETCH_ASSOC)) {
@@ -26,8 +29,3 @@ if($broj > 0){
 	}
  http_response_code(200);
  echo json_encode($objave_arr, JSON_PRETTY_PRINT);
-
-}else{
-    http_response_code(404);
-	echo json_encode(array("message" => "Ni jedana objava nije nadjena."));
-}
