@@ -14,14 +14,12 @@ class Articles{
 	private $page;
 
 
-	public function __construct($conn){
+	public function __construct(PDO $conn){
            $this->conn 		           = $conn;
     }
 
     function getArticles(){
-    	$getArticles = $this->conn->prepare("SELECT * FROM articles_authors");
-    	$getArticles->execute();
-    	return $getArticles;
+        return $this->conn->query("SELECT * FROM articles_authors");
     }
 
 	function setArticle($article_id){
@@ -101,9 +99,8 @@ class Articles{
 
 	function getArticlePagination($limit, $page){
 		$start_Article = ($page-1) * $limit;
-		$total_pages_pdo = $this->conn->prepare("SELECT count(id) as count FROM articles_authors");
-		$total_pages_pdo->execute();
-		$total_rows = $total_pages_pdo->fetchColumn();
+		$total_pages_pdo = $this->conn->query("SELECT count(id) as count FROM articles_authors");
+        $total_rows = $total_pages_pdo->fetchColumn();
 		$total_pages = ceil($total_rows / $limit);
 		$Articles_return = $this->conn->prepare("SELECT * FROM articles_authors ORDER BY id DESC LIMIT :start_Article, :limit ");
 		$Articles_return->bindParam(':start_Article', $start_Article, PDO::PARAM_INT);
