@@ -36,9 +36,9 @@
 
         <!-- Date/Time -->
         <?php 
-        if($created == $updated){ 
+        if($created === $updated){
             echo '<p>Posted on '.gmdate("F j Y, g:iA", strtotime($created)).'</p>';
-        }elseif($created != $updated){
+        }elseif($created !== $updated){
             echo '<p>Posted on '.gmdate("F j Y, g:iA", strtotime($created)).' | Updated on '.gmdate("F j Y, g:iA", strtotime($updated)).'</p>';
         }
         ?>
@@ -56,9 +56,9 @@
 
                <!-- Date/Time -->
         <?php 
-        if($created == $updated){ 
+        if($created === $updated){
             echo '<p>Posted on '.gmdate("F j Y, g:iA", strtotime($created)).' <small>by <a href="'.$link_sajta.'index.php?stranica=author&author='.$author_id.'">'.$author.'</a></small></p>';
-        }elseif($created != $updated){
+        }elseif($created !== $updated){
             echo '<p>Posted on '.gmdate("F j Y, g:iA", strtotime($created)).' | Updated on '.gmdate("F j Y, g:iA", strtotime($updated)).' <small>by <a href="'.$link_sajta.'index.php?stranica=author&author='.$author_id.'">'.$author.'</a></small></p>';
         }
         ?>

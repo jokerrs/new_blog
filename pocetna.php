@@ -33,9 +33,9 @@
                   <!-- Date/Time -->
               <?php 
 
-              if($objava_value['created_time'] == $objava_value['update_time']){ 
+              if($objava_value['created_time'] === $objava_value['update_time']){
                   echo '<p>Posted on '.gmdate("F j Y, g:iA", strtotime($objava_value['created_time'])).'';
-              }elseif($objava_value['created_time'] != $objava_value['update_time']){
+              }elseif($objava_value['created_time'] !== $objava_value['update_time']){
                   echo '<p>Posted on '.gmdate("F j Y, g:iA", strtotime($objava_value['created_time'])).'</p><p>Updated on '.gmdate("F j Y, g:iA", strtotime($objava_value['update_time'])).'';
               }
               ?> by
@@ -71,7 +71,7 @@ if($strana>=2){
   
 
 for ($i=-4; $i<=4; $i++) { 
-  if($srednji_index+$i==$strana) 
+  if($srednji_index+$i===$strana)
     $link_strane .= "<li class='page-item active'><a class='page-link' href='index.php?strana=".($srednji_index+$i)."'>".($srednji_index+$i)."</a></li>"; 
   else
     $link_strane .= "<li class='page-item'><a class='page-link' href='index.php?strana=".($srednji_index+$i)."'>".($srednji_index+$i)."</a></li>";   

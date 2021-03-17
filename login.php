@@ -6,7 +6,9 @@
     // Klasa korisnici.php
     require_once ("./klase/korisnici.php");
 
-
+if(isset($_SESSION['uid'])){
+    header('Location: post_list.php');
+}
     if(isset($_POST['username'], $_POST['password'])){
         $UserLogin = new Users($conn);
         $UserLogin_bool = $UserLogin->userLogin($_POST['username'], $_POST['password']);
@@ -18,8 +20,6 @@
                 echo "ok";
             }
         }
-    }elseif(isset($_SESSION['uid'])){
-                header('Location: post_list.php');
     }else{
 ?>
 <!doctype html>

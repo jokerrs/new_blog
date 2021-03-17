@@ -14,7 +14,7 @@ class Articles{
 	private $page;
 
 
-	function __construct($conn){ 
+	public function __construct($conn){
            $this->conn 		           = $conn;
     }
 
@@ -69,10 +69,9 @@ class Articles{
 		$insertArticle = $this->conn->prepare("INSERT INTO articles (`title`, `content`, `author`, `main_image`, `created_time`) VALUES (?, ?, ?, ?, ?)");
 		if($insertArticle->execute([$article_title, $article_content, $article_author, $article_image, date('Y-m-d H:i:s')])){ 
 			return true;
-		}else{
-			return false;
 		}
-	}
+        return false;
+    }
 
 	function setupdateArticle($article_id, $article_title, $article_content, $article_image){
 		$this->article_title 	= $article_title;
@@ -145,11 +144,10 @@ class Articles{
 		$IsAuthor->execute([$article_id]);
 		
 		foreach($IsAuthor as $ress){
-			if($ress['author']==$author_id){
+			if($ress['author']===$author_id){
 				return true;
-			}else{
-				return false;
 			}
-		}
+            return false;
+        }
 	}
 }
