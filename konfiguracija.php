@@ -1,9 +1,9 @@
 <?php
-$link_sajta = "http://localhost/novi_projekat/"; // Ubacena varijabla radi bolje migracije na drugu serversku konfiguraciju, takodje i u slucaju promena domena
-$password = "Nemanjabg44";
-$username = "root";
-$dbhost = "localhost";
-$dbname = "zadatak1";
+$link_sajta = ""; // Ubacena varijabla radi bolje migracije na drugu serversku konfiguraciju, takodje i u slucaju promena domena
+$password = "";
+$username = "";
+$dbhost = "";
+$dbname = "";
 
 	try { // Konekcija za bazom PDO
 		    $conn = new PDO('mysql:host='.$dbhost.';dbname='.$dbname, $username, $password);
